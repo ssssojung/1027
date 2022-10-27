@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 웹표준스타일 */
+* { margin:0; padding:0; font-size:1.2rem;
+   line-height:1.2rem;
+   letter-spacing: -0.08em;
+   font-family:'Nanum Gothic', sans-serif;}
+ul, li, dl, dt, dd, ol {list-style:none}
+a {color:#222; text-decoration: none}
+a:hover {color: blue; text-decoration: none;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;}
+
+$myfont : 'Nanum Gothic', sans-serif;
+$linkFC : #222;
+$activeFC: green;
+$conWidth : 1280px;
+$minHeight : 600px;
+
+/*레이아웃*/
+#nav {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left:0; right:0; top:0; background-color:white;
+  z-index:10000;
+  a{
+    display: block;
+  }
+  & > *{
+
+  }
+  h1 {
+    a{
+      img{
+        width:150px;
+      }
+    }
+  } ////h1
+  .depth1 {
+    display: flex; //container
+    li { //items
+     margin:0 15px;
+     position: relative;
+     &::before{
+      content: "";
+      background-color: #ccc;
+      width: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      transition: 0.5s;
+     }
+     &.active::before{
+      width: 100%;
+     }
+     &.active a{
+      color: red;
+      z-index: 10000;
+      position: relative;
+      text-decoration: none;
+    }
+    }
+  }
+}////상단마침
+.wrap {
+   h2{
+      text-align: center;
+      &:before{
+        content: "";
+        display: inline-block;
+        height:3px; width:20px;
+        background-color:$linkFC;
+        margin:0 auto 15px;
+      }
+   }
+   section{
+     padding:80px 0;
+     min-height:$minHeight;
+   }
+   #sec1 {
+      padding-top:200px;
+      background-color:#ccc;
+   }
+   #sec2 {
+
+   }
+   #sec3 {
+     background-color:#ccc;
+   }
+  //  #sec4 {
+  //   #interview{ max-width: $conWidth; margin:0 auto;
+  //    dt{
+  //      border-bottom:1px solid $linkFC; padding: 10px;
+  //      &:before{ content: "Q"; margin-right: 20px; font-size: 1.2em; color:red; vertical-align: middle}
+  //      strong{ vertical-align: middle; font-size: 2em; font-weight: normal }
+  //      &.show{ border-bottom-width:3px; border-color:$linkFC;
+  //         strong{ font-weight: bold;}
+  //         &:before{ color:black; font-weight: bold;}
+  //         & + *{ display: block}
+  //            }
+  //     }
+  //    dd{
+  //      display: none; padding: 20px  50px;
+  //    }
+  //   }
+  //  }
+  #preInterview{
+    h2{
+
+    }
+    dl{
+      dt{
+        color: black;
+        &.act{
+          color: red;
+        }
+        &.act +dd{
+          max-height: 250px;
+          padding-top: 1rem;
+        }
+      }
+      dd{max-height: 0;overflow: hidden;transition: 0.5s; padding: 0;}
+    }
+  }
+}
